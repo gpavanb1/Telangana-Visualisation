@@ -1,42 +1,20 @@
-/* Starter code taken from freecodecamp.org */
-
-html, body {
-  padding: 0;
-  margin: 0;
+#mapid { width: 500px; height: 500px; }
+.leaflet-container {
+  background: #fff;
+}
+.legend {
+	line-height: 18px;
+	color: #555;
+}
+.legend i {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin-right: 8px;
+	opacity: 0.7;
 }
 
 body {
-  display: flex;
   justify-content: center;
   font-family: 'Arial';
-}
-
-#main {
-  width: 1000px;
-  display: flex;
-  padding-top: 1rem;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-div.tooltip {
-  position: absolute;
-  padding: 10px;
-  font: 12px Arial;
-  background: rgba(255, 255, 204, 0.9);
-  box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.6);
-  border: 0px;
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.path {
-  fill: #ccc;
-  stroke: #fff;
-  stroke-width: .5px;
-}
-
-.path:hover {
-  fill: red;
 }
