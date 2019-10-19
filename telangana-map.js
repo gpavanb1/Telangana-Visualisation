@@ -52,14 +52,14 @@ $.getJSON("./data/sample_data.json", function(json) {
               this.setStyle({
                 'fillColor': '#0000ff'
               });
+              var tipText = feature.properties.D_NAME + "<br>"
+                            + getData(feature.properties.D_NAME);
+              this.bindTooltip(tipText).openTooltip();
             });
             layer.on('mouseout', function () {
               this.setStyle({
                 'fillColor': getColor(getData(feature.properties.D_NAME), vals),
               });
-            });
-            layer.on('click', function () {
-              alert(feature.properties.D_NAME + "\n" + getData(feature.properties.D_NAME));
             });
         }
        }).addTo(map);
