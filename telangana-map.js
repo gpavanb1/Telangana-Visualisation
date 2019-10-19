@@ -67,7 +67,7 @@ $.getJSON("./data/sample_data.json", function(json) {
 
     // Add legend
     if(legend instanceof L.Control){map.removeControl(legend);}
-    legend = L.control({position: 'bottomright'});
+    legend = L.control({position: 'topright'});
     legend.onAdd = function (map) {
     	var div = L.DomUtil.create('div', 'info legend'),
     		grades = d3.ticks(min, max, 6),
