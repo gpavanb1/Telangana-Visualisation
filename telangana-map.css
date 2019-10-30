@@ -32,3 +32,5 @@
   border-radius: 0;
   background: #f1f1f1;
 }
+
+div.info.legend.leaflet-control br { clear: both; }
