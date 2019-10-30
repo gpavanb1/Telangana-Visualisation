@@ -7,17 +7,24 @@ var map = L.map('mapid', {zoomControl: false, scrollWheelZoom: false}).setView(i
 var legend;
 $.getJSON("./data/sample_data.json", function(json) {
    // Populate dropdown entries
-   var x = document.getElementById("dropdown");
+   var thisUL = document.getElementById('dropMenu');
    for (i in json["Hyderabad"]) {
-     var option = document.createElement("option");
-     option.text = i;
-     x.add(option);
+     var link = document.createElement('a');
+     link.appendChild(document.createTextNode(i));
+     var thisLI = document.createElement('li');
+     thisLI.appendChild(link);
+     thisUL.appendChild(thisLI);
    }
 
    // Add event listener
-   $('#dropdown').bind('change', function() {
-     // Set prop
-     prop = this.value;
+   // Caret definition
+   var caretHTML = " <span class='caret'></span>";
+   // On-click event
+   $(".dropdown-menu").on('click', 'li a', function() {
+     var currValue = $(this).text();
+     prop = currValue;
+     $(".btn:first-child").text(currValue);
+     $(".btn:first-child").html(currValue + " " + caretHTML)
 
      // Get Data function
      function getData(val) {
@@ -82,7 +89,8 @@ $.getJSON("./data/sample_data.json", function(json) {
     };
     legend.addTo(map);
   });
-  $('#dropdown').trigger('change');
+  //trigger event
+  $('.dropdown-menu li a').first().trigger('click');
 });
 
 // Define color
@@ -96,3 +104,14 @@ function getColor(d, values) {
 
 	return myColor(d);
 }
+
+// Filter from dropdown
+// Taken from https://www.w3schools.com/bootstrap/tryit.asp
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".dropdown-menu li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
